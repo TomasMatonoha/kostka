@@ -7,7 +7,6 @@ const w2 = document.getElementById("w2");
 const w3 = document.getElementById("w3");
 const weapon = document.getElementById("weapon");
 const combatLog = document.getElementById("combatLog");
-let delayInMs = 1000;
 let roll;
 let enemyMaxHP = 1;
 let playerHP = 20;
