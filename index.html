@@ -15,23 +15,25 @@
 
 <body>
   <header class="bg-warning">
-    <h1 class="text-center">dnd if it was shit</h1>
+    <h1 class="text-center"><strong>MONSTER HUNTER</strong></h1>
   </header>
   <main class="container">
-    <div class="text-center p-1" id="msg"></div>
-    <div class="container d-flex align-items-center justify-content-center p-3">
-      <p id="hpCount"></p>
-      <img src="img/welcum.png" id="enemy" alt="">
+    <div class="text-center w-75 mx-auto p-1" id="msg"><h5>Vítejte ve hře, vašim úkolem je zabít co nejvíce monster. Máte 20 životů a k dispozici 3 zbraně. Každá zbraň je jinak účinná na danné monstrum. Po zabití monstra dostanete možnost si jednu zbraň vylepšit. Monstrům se zvětšuje s kažým kolem počet životů.</h5></div>
+    <div class="container d-flex align-items-center justify-content-center p-3" id="startButton">
+      <button>
+        <img src="img/welcum.png" alt="">
+      </button>
     </div>
+    <div class="container d-flex align-items-center justify-content-center p-3">
+      <img src="img/enemy1.png" class="d-none" id="enemy" alt="">
+    </div>
+    <div class="mx-auto w-75" id="combatLog"></div>
     <div id="weapon" class="container d-flex align-items-center justify-content-center p-3 d-none">
-      <button class="m-1" id="w1"><img src="img/weapon1.png" alt=""></button>
-      <button class="m-1" id="w2"><img src="img/weapon2.png" alt=""></button>
-      <button class="m-1" id="w3"><img src="img/weapon3.png" alt=""></button>
+      <button class="m-1" id="w1"><img src="img/weapon1.png" title="Vodní hůlka" alt=""></button>
+      <button class="m-1" id="w2"><img src="img/weapon2.png" title="Meč" alt=""></button>
+      <button class="m-1" id="w3"><img src="img/weapon3.png" title="Stříbrná dýka" alt=""></button>
     </div>
-    <div class="container d-flex align-items-center justify-content-center p-3">
-      <button class="btn btn-warning" id="button">Bojuj</button>
-    </div>
-    <div class="text-center p-1" id="stats">Statistika</div>
+    <div class="text-center p-1" id="stats"></div>
   </main>
   <footer>
     <!-- place footer here -->

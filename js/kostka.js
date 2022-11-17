@@ -1,91 +1,153 @@
-const enemy = document.getElementById('enemy');
-const stats = document.getElementById('stats');
-const button = document.getElementById('button');
-const msg = document.getElementById('msg');
-const w1 = document.getElementById('w1');
-const w2 = document.getElementById('w2');
-const w3 = document.getElementById('w3');
-const weapon = document.getElementById('weapon')
+const enemy = document.getElementById("enemy");
+const stats = document.getElementById("stats");
+const startButton = document.getElementById("startButton");
+const msg = document.getElementById("msg");
+const w1 = document.getElementById("w1");
+const w2 = document.getElementById("w2");
+const w3 = document.getElementById("w3");
+const weapon = document.getElementById("weapon");
+const combatLog = document.getElementById("combatLog");
+let delayInMs = 1000;
 let roll;
-let lastEnemy;
 let enemyMaxHP = 1;
+let playerHP = 20;
 let w1DMG = 1;
 let w2DMG = 1;
 let w3DMG = 1;
 let pocHod = [];
-let enemies = ["Fire demon", "Troll", "Vampire"];
 
-button.addEventListener('click', function(){
+startButton.addEventListener("click", function () {
+  startButton.classList.add("d-none");
+  weapon.classList.remove("d-none");
+  weapon.classList.add("d-inline-block");
+  msg.classList.add("d-none");
+});
+
+w1.addEventListener("click", function () {
+  w1DMG++;
+  {
     roll = Math.ceil(Math.random() * 3);
-    console.log('roll', roll);
-    if(roll == 1){
-        combatLoop(w1DMG, enemyMaxHP);
+    console.log("roll", roll);
+    if (roll == 1) {
+      enemy.title = 'Ohnivý mág'
+      combatLoop(w1DMG, enemyMaxHP);
+    } else if (roll == 2) {
+      enemy.title = 'Troll'
+      combatLoop(w2DMG, enemyMaxHP);
+    } else if (roll == 3) {
+      enemy.title = 'Upír'
+      combatLoop(w3DMG, enemyMaxHP);
     }
-    else if(roll == 2){
-        combatLoop(w2DMG, enemyMaxHP);
-    }
-    else if(roll == 3){
-        combatLoop(w3DMG, enemyMaxHP);
-    }
-    console.log('w1', w1DMG)
-    console.log('w2', w2DMG)
-    console.log('w3', w3DMG)
+    console.log("w1", w1DMG);
+    console.log("w2", w2DMG);
+    console.log("w3", w3DMG);
     enemyMaxHP++;
-    lastEnemy = roll;
-    pocHod.push(roll);
     enemy.src = `img/enemy${roll}.png`;
-    writeStats();
-    weapon.classList.remove('d-none');
-    weapon.classList.add('d-inline-block');
-    button.classList.add('d-none');
-    button.classList.remove('d-inline-block');
-})
+    pocHod.push(roll);
+    enemy.classList.remove("d-none");
+    enemy.classList.add("d-inline-block");
+    weapon.classList.remove("d-none");
+    weapon.classList.add("d-inline-block");
+  }
+});
 
-w1.addEventListener('click', function(){
-    w1DMG++;
-    weapon.classList.remove('d-inline-block');
-    weapon.classList.add('d-none');
-    enemy.classList.remove('d-none');
-    enemy.classList.add('d-inline-block');
-    button.classList.remove('d-none');
-    button.classList.add('d-inline-block');
-})
-
-w2.addEventListener('click', function(){
-    w2DMG++;
-    weapon.classList.remove('d-inline-block');
-    weapon.classList.add('d-none');
-    enemy.classList.remove('d-none');
-    enemy.classList.add('d-inline-block');
-    button.classList.remove('d-none');
-    button.classList.add('d-inline-block');
-})
-
-w3.addEventListener('click', function(){
-    w3DMG++;
-    weapon.classList.remove('d-inline-block');
-    weapon.classList.add('d-none');
-    enemy.classList.remove('d-none');
-    enemy.classList.add('d-inline-block');
-    button.classList.remove('d-none');
-    button.classList.add('d-inline-block');
-})
-
-function combatLoop(damage, enemyHP){
-    let playerMaxHP = 20;
-    let playerHP = playerMaxHP;
-    while(enemyHP>0 && playerHP>=0){
-        enemyHP = enemyHP-damage;
-        playerHP--;
+w2.addEventListener("click", function () {
+  w2DMG++;
+  {
+    roll = Math.ceil(Math.random() * 3);
+    console.log("roll", roll);
+    if (roll == 1) {
+      enemy.title = 'Ohnivý mág'
+      combatLoop(w1DMG, enemyMaxHP);
+    } else if (roll == 2) {
+      enemy.title = 'Troll'
+      combatLoop(w2DMG, enemyMaxHP);
+    } else if (roll == 3) {
+      enemy.title = 'Upír'
+      combatLoop(w3DMG, enemyMaxHP);
     }
-    console.log(playerHP);
-    button.classList.remove('d-none');
-    button.classList.add('d-inline-block');
-    enemy.classList.add('d-none');
-    enemy.classList.remove('d-inline-block');
+    console.log("w1", w1DMG);
+    console.log("w2", w2DMG);
+    console.log("w3", w3DMG);
+    enemyMaxHP++;
+    enemy.src = `img/enemy${roll}.png`;
+    pocHod.push(roll);
+    enemy.classList.remove("d-none");
+    enemy.classList.add("d-inline-block");
+    weapon.classList.remove("d-none");
+    weapon.classList.add("d-inline-block");
+  }
+});
+
+w3.addEventListener("click", function () {
+  w3DMG++;
+  {
+    roll = Math.ceil(Math.random() * 3);
+    console.log("roll", roll);
+    if (roll == 1) {
+      enemy.title = 'Ohnivý mág'
+      combatLoop(w1DMG, enemyMaxHP);
+    } else if (roll == 2) {
+      enemy.title = 'Troll'
+      combatLoop(w2DMG, enemyMaxHP);
+    } else if (roll == 3) {
+      enemy.title = 'Upír'
+      combatLoop(w3DMG, enemyMaxHP);
+    }
+    console.log("w1", w1DMG);
+    console.log("w2", w2DMG);
+    console.log("w3", w3DMG);
+    enemyMaxHP++;
+    enemy.src = `img/enemy${roll}.png`;
+    pocHod.push(roll);
+    enemy.classList.remove("d-none");
+    enemy.classList.add("d-inline-block");
+    weapon.classList.remove("d-none");
+    weapon.classList.add("d-inline-block");
+  }
+});
+
+function combatLoop(damage, enemyHP) {
+  console.log("damage", damage);
+  combatLog.innerHTML = "";
+  let loops = 0;
+  let zivoty;
+  if(damage==1){
+    zivoty = 'život';
+  }
+  else if(damage<=4){
+    zivoty = 'životy';
+  }
+  else{
+    zivoty = 'životů';
+  }
+  while (enemyHP > 0 && playerHP > 0) {
+    loops++;
+    console.log("Loops", loops);
+    enemyHP = enemyHP - damage;
+    playerHP--;
+    combatLog.innerHTML += `<p class="text-center">Nepřítel ubral hráči <strong>1</strong> život (Player HP : ${playerHP})</p>`;
+    combatLog.innerHTML += `<p class="text-center">Hráč ubral nepříteli <strong>${damage}</strong> ${zivoty} (Enemy HP: ${enemyHP})</p>`;
+  }
+  stats.innerHTML = `<p>Počet životů hráče : ${playerHP}</p>`;
+  writeStats();
+  console.log("playerHP", playerHP);
+  weapon.classList.remove("d-inline-block");
+  weapon.classList.add("d-none");
 }
 
-function writeStats(){
-    stats.innerHTML = `<p>Předchozí nepřítel : ${enemies[lastEnemy-1]}</p>`;
-    stats.innerHTML += `<p>Počet poražených nepřátel : ${pocHod.length}</p>`;
+function writeStats() {
+  if (playerHP <= 0) {
+    stats.innerHTML = `<p><b>KONEC HRY<b></p>`;
+    stats.innerHTML += `<p><b>POČET PORAŽENÝCH NEPŘÁTEL : ${pocHod.length}<b></p>`;
+    enemy.disabled = true;
+    w1.disabled = true;
+    w2.disabled = true;
+    w3.disabled = true;
+  } else {
+    stats.innerHTML += `<p>Počet životů nepřátel : ${enemyMaxHP}</p>`;
+    stats.innerHTML += `<p>Poškození, které způsobí vodní hůlka : ${w1DMG}</p>`;
+    stats.innerHTML += `<p>Poškození, které způsobí meč : ${w2DMG}</p>`;
+    stats.innerHTML += `<p>Poškození, které způsobí stříbrná dýka : ${w3DMG}</p>`;
+  }
 }
